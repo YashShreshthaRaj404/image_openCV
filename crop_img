@@ -1,0 +1,5 @@
+"""
+img[range of y, range of x]
+"""
+# such as
+roi = img[20:230,120:372]
