@@ -101,10 +101,10 @@ Since OpenCV version 4.3.0, also source distributions are provided in PyPI. This
 
 You can also force pip to build the wheels from the source distribution. Some examples:
 
-•```
+```
 pip install --no-binary opencv-python opencv-python
 ```
-•```
+```
 pip install --no-binary :all: opencv-python
 ```
 
