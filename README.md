@@ -15,16 +15,27 @@ There are four different packages (see options 1, 2, 3 and 4 below) and you shou
 
 a. Packages for standard desktop environments (Windows, macOS, almost any GNU/Linux distribution)
 
-Option 1 - Main modules package: pip install opencv-python
-Option 2 - Full package (contains both main modules and contrib/extra modules): pip install opencv-contrib-python (check contrib/extra modules listing from OpenCV documentation)
+•Option 1 - Main modules package: 
+```
+pip install opencv-python
+```
+•Option 2 - Full package (contains both main modules and contrib/extra modules):
+```
+pip install opencv-contrib-python
+```
+(check contrib/extra modules listing from OpenCV documentation)
 b. Packages for server (headless) environments (such as Docker, cloud environments etc.), no GUI library dependencies
 
 These packages are smaller than the two other packages above because they do not contain any GUI functionality (not compiled with Qt / other GUI components). This means that the packages avoid a heavy dependency chain to X11 libraries and you will have for example smaller Docker images as a result. You should always use these packages if you do not use cv2.imshow et al. or you are using some other package (such as PyQt) than OpenCV to create your GUI.
 
-Option 3 - Headless main modules package: pip install opencv-python-headless
-Option 4 - Headless full package (contains both main modules and contrib/extra modules): pip install opencv-contrib-python-headless (check contrib/extra modules listing from OpenCV documentation)
+•Option 3 - Headless main modules package: pip install opencv-python-headless
+•Option 4 - Headless full package (contains both main modules and contrib/extra modules):
+```
+pip install opencv-contrib-python-headless
+```
+(check contrib/extra modules listing from OpenCV documentation)
 
-## Import the package:
+### Import the package:
 
 ```
 import cv2
@@ -36,6 +47,6 @@ All packages contain Haar cascade files. cv2.data.haarcascades can be used as a 
 cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
 ```
 
-## Read OpenCV documentation
+### Read OpenCV documentation
 
 Before opening a new issue, read the FAQ below and have a look at the other issues which are already open.
