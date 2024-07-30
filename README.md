@@ -1,2 +1,2 @@
-# image_openCV-
-OpenCV is an open-source software library for computer vision and machine learning that helps a computer understand the content of digital Images like phograph and video 
+# OpenCV
+##OpenCV (Open Source Computer Vision Library)### is a library of programming functions mainly for real-time computer vision.[2] Originally developed by Intel, it was later supported by Willow Garage, then Itseez (which was later acquired by Intel[3]). The library is cross-platform and licensed as free and open-source software under Apache License
