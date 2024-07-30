@@ -93,3 +93,21 @@ The build can be customized with environment variables. In addition to any varia
 ```ENABLE_JAVA```, Set to 1 to enable the Java client build. This is disabled by default.
 
 ```CMAKE_ARGS```. Additional arguments for OpenCV's CMake invocation. You can use this to make a custom build.
+
+
+
+# Source Distributions
+Since OpenCV version 4.3.0, also source distributions are provided in PyPI. This means that if your system is not compatible with any of the wheels in PyPI, pip will attempt to build OpenCV from sources. If you need a OpenCV version which is not available in PyPI as a source distribution, please follow the manual build guidance above instead of this one.
+
+You can also force pip to build the wheels from the source distribution. Some examples:
+
+```
+pip install --no-binary opencv-python opencv-python
+```
+```
+pip install --no-binary :all: opencv-python
+```
+
+If you need contrib modules or headless version, just change the package name (step 4 in the previous section is not needed). However, any additional CMake flags can be provided via environment variables as described in step 3 of the manual build section. If none are provided, OpenCV's CMake scripts will attempt to find and enable any suitable dependencies. Headless distributions have hard coded CMake flags which disable all possible GUI dependencies.
+
+On slow systems such as Raspberry Pi the full build may take several hours. On a 8-core Ryzen 7 3700X the build takes about 6 minutes.
