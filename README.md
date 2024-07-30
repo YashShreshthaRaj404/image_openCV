@@ -101,11 +101,11 @@ Since OpenCV version 4.3.0, also source distributions are provided in PyPI. This
 
 You can also force pip to build the wheels from the source distribution. Some examples:
 
+•```
+pip install --no-binary opencv-python opencv-python
 ```
-•pip install --no-binary opencv-python opencv-python
-```
-```
-•pip install --no-binary :all: opencv-python
+•```
+pip install --no-binary :all: opencv-python
 ```
 
 If you need contrib modules or headless version, just change the package name (step 4 in the previous section is not needed). However, any additional CMake flags can be provided via environment variables as described in step 3 of the manual build section. If none are provided, OpenCV's CMake scripts will attempt to find and enable any suitable dependencies. Headless distributions have hard coded CMake flags which disable all possible GUI dependencies.
