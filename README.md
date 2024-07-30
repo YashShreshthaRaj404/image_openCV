@@ -23,14 +23,19 @@ These packages are smaller than the two other packages above because they do not
 
 Option 3 - Headless main modules package: pip install opencv-python-headless
 Option 4 - Headless full package (contains both main modules and contrib/extra modules): pip install opencv-contrib-python-headless (check contrib/extra modules listing from OpenCV documentation)
-Import the package:
 
+## Import the package:
+
+```
 import cv2
+```
 
 All packages contain Haar cascade files. cv2.data.haarcascades can be used as a shortcut to the data folder. For example:
 
+```
 cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
+```
 
-Read OpenCV documentation
+## Read OpenCV documentation
 
 Before opening a new issue, read the FAQ below and have a look at the other issues which are already open.
