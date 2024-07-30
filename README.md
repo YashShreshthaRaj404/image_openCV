@@ -50,3 +50,42 @@ cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.x
 ### Read OpenCV documentation
 
 Before opening a new issue, read the FAQ below and have a look at the other issues which are already open.
+
+
+
+
+# CI build process
+The project is structured like a normal Python package with a standard setup.py file. The build process for a single entry in the build matrices is as follows (see for example .github/workflows/build_wheels_linux.yml file):
+
+In Linux and MacOS build: get OpenCV's optional C dependencies that we compile against
+
+Checkout repository and submodules
+
+OpenCV is included as submodule and the version is updated manually by maintainers when a new OpenCV release has been made
+Contrib modules are also included as a submodule
+Find OpenCV version from the sources
+
+Build OpenCV
+
+tests are disabled, otherwise build time increases too much
+there are 4 build matrix entries for each build combination: with and without contrib modules, with and without GUI (headless)
+Linux builds run in manylinux Docker containers (CentOS 5)
+source distributions are separate entries in the build matrix
+Rearrange OpenCV's build result, add our custom files and generate wheel
+
+Linux and macOS wheels are transformed with auditwheel and delocate, correspondingly
+
+### Install the generated wheel
+
+Test that Python can import the library and run some sanity checks
+
+Use twine to upload the generated wheel to PyPI (only in release builds)
+
+Steps 1--4 are handled by pip wheel.
+
+The build can be customized with environment variables. In addition to any variables that OpenCV's build accepts, we recognize:
+
+```CI_BUILD```. Set to 1 to emulate the CI environment build behaviour. Used only in CI builds to force certain build flags on in setup.py. Do not use this unless you know what you are doing.
+```ENABLE_CONTRIB``` and ENABLE_HEADLESS. Set to 1 to build the contrib and/or headless version
+```ENABLE_JAVA```, Set to 1 to enable the Java client build. This is disabled by default.
+```CMAKE_ARGS```. Additional arguments for OpenCV's CMake invocation. You can use this to make a custom build.
